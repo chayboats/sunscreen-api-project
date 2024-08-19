@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import 'dotenv/config';
 
 const app = express();
 const port = 3000;
@@ -9,10 +10,8 @@ const pages = {
   2: 'RESULTS',
 };
 
-const UV_URL = 'https://api.openuv.io/api/v1/uv?';
-
-const GOOGLE_API_KEY = 'AIzaSyAE9LIN9qhGxCfTiDwXKHE17aaq0C-hQwk';
 const GOOGLE_GEOCODING_URL = `https://maps.googleapis.com/maps/api/geocode/json?address=`;
+const UV_URL = 'https://api.openuv.io/api/v1/uv?';
 
 function encodeAddress(address) {
   const encodedValues = Object.values(address).map((value) => value.replace(/ /g, '%20'));
@@ -21,7 +20,7 @@ function encodeAddress(address) {
 
 async function getAddressData(address) {
   try {
-    const result = await fetch(`${GOOGLE_GEOCODING_URL}${address}&key=${GOOGLE_API_KEY}`);
+    const result = await fetch(`${GOOGLE_GEOCODING_URL}${address}&key=${process.env.GOOGLE_API_KEY}`);
     const jsonResult = await result.json();
 
     return jsonResult.status === 'OK' ? jsonResult.results[0] : jsonResult;
@@ -33,7 +32,7 @@ async function getAddressData(address) {
 
 async function getUVIndex(lat, lng) {
   try {
-    const uvResult = await fetch(`${UV_URL}lat=${lat}&lng=${lng}`, { headers: { 'Content-Type': 'application/json', 'x-access-token': 'openuv-eca9crlztz9vaw-io' } });
+    const uvResult = await fetch(`${UV_URL}lat=${lat}&lng=${lng}`, { headers: { 'Content-Type': 'application/json', 'x-access-token': process.env.OPEN_UV_API_KEY } });
     const jsonUvResult = await uvResult.json();
 
     return jsonUvResult.error ? jsonUvResult.error : Math.round(jsonUvResult.result.uv);
