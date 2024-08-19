@@ -4,18 +4,21 @@ import 'dotenv/config';
 
 const app = express();
 const port = 3000;
-const pages = {
-  0: 'HOME',
-  1: 'LOCATION',
-  2: 'RESULTS',
-};
-
 const GOOGLE_GEOCODING_URL = `https://maps.googleapis.com/maps/api/geocode/json?address=`;
 const UV_URL = 'https://api.openuv.io/api/v1/uv?';
 
 function encodeAddress(address) {
   const encodedValues = Object.values(address).map((value) => value.replace(/ /g, '%20'));
   return encodedValues.join('%20');
+}
+
+function setUVCategory(uvIndex) {
+  if (uvIndex <= 2) return 'Low';
+  if (uvIndex <= 5) return 'Moderate';
+  if (uvIndex <= 7) return 'High';
+  if (uvIndex <= 10) return 'Very High';
+  if (uvIndex >= 11) return 'Extremely High';
+  return 'Invalid UV Index';
 }
 
 async function getAddressData(address) {
@@ -42,24 +45,16 @@ async function getUVIndex(lat, lng) {
   }
 }
 
-function setUVCategory(uvIndex) {
-  if (uvIndex <= 2) return 'Low';
-  if (uvIndex <= 5) return 'Moderate';
-  if (uvIndex <= 7) return 'High';
-  if (uvIndex <= 10) return 'Very High';
-  if (uvIndex >= 11) return 'Extremely High';
-  return 'Invalid UV Index';
-}
 app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.render('index.ejs', { page: pages[0] });
+  res.render('index.ejs', { page: 'HOME' });
 });
 
 app.post('/location', (req, res) => {
-  res.render('index.ejs', { page: pages[1], data: undefined });
+  res.render('index.ejs', { page: 'LOCATION', data: undefined });
 });
 
 app.post('/results', async (req, res) => {
@@ -68,7 +63,7 @@ app.post('/results', async (req, res) => {
   const data = {};
   if (addressData.status) {
     data.error = 'There was an error finding this location';
-    res.render('index.ejs', { page: pages[1], data });
+    res.render('index.ejs', { page: 'LOCATION', data });
     return;
   }
 
@@ -80,7 +75,7 @@ app.post('/results', async (req, res) => {
 
   if (typeof uvIndex === 'string') {
     data.error = 'There was an error finding this location';
-    res.render('index.ejs', { page: pages[1], data });
+    res.render('index.ejs', { page: 'LOCATION', data });
     return;
   }
 
@@ -89,11 +84,11 @@ app.post('/results', async (req, res) => {
   data.uvIndexCategory = setUVCategory(uvIndex);
   data.message = uvIndex > 5 ? 'You need sunscreen!' : "Sunscreen isn't necessary right now.";
 
-  res.render('index.ejs', { page: pages[2], data });
+  res.render('index.ejs', { page: 'RESULTS', data });
 });
 
 app.post('/new-search', (req, res) => {
-  res.render('index.ejs', { page: pages[1], data: undefined });
+  res.render('index.ejs', { page: 'LOCATION', data: undefined });
 });
 
 app.listen(port, () => {
