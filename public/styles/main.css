@@ -1,0 +1,206 @@
+@import './fonts.css';
+:root {
+  --color-pink-000: rgb(255, 244, 251);
+  --color-pink-100: rgb(255, 192, 217);
+  --color-pink-200: rgb(255, 153, 193);
+  --color-pink-300: rgb(255, 105, 166);
+  --color-pink-400: rgb(215, 0, 108);
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(0deg, var(--color-pink-100) 0%, var(--color-pink-200) 49%, var(--color-pink-300) 100%);
+}
+
+.time {
+  color: var(--color-pink-400);
+}
+
+h1 {
+  font-size: 3rem;
+}
+.screentime {
+  display: flex;
+  justify-content: center;
+}
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input,
+button {
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0.5rem;
+  border-radius: var(--border-radius-sm);
+}
+
+h2 {
+  color: black;
+}
+
+label {
+  font-size: 0.75rem;
+  color: rgb(70, 70, 70);
+}
+
+input {
+  border: 1px solid rgb(196, 196, 196);
+  width: 100%;
+}
+
+button {
+  background-color: var(--color-pink-400);
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem;
+  transition: 0.15s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--color-pink-300);
+}
+
+.main-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: url('../images/file.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.ftr-card {
+  background-color: var(--color-pink-000);
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.home-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  max-width: 15rem;
+  color: black;
+  padding-top: 1rem;
+}
+
+.home-card-content {
+  color: gray;
+  font-weight: 300;
+}
+
+.pink-text {
+  color: var(--color-pink-400);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.form-card-container {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.city-state {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.err-msg {
+  background-color: rgb(255, 208, 0);
+  color: black;
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem;
+}
+
+h2 {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.fa-location-dot {
+  font-size: 2rem;
+}
+
+.results {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 2fr 1fr auto;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.uv-index {
+  line-height: 20rem;
+  font-size: 22rem;
+  font-weight: 900;
+  color: var(--color-pink-200);
+  text-shadow: 0 8px 9px var(--color-pink-300), 0px -2px 1px var(--color-pink-000);
+  text-align: center;
+  border-radius: 20px;
+}
+
+.category {
+  font-weight: 800;
+  font-size: 3rem;
+  text-shadow: 0 8px 9px var(--color-pink-300), 0px -2px 1px var(--color-pink-200);
+}
+
+.message {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 7px 9px var(--color-pink-300), 0px -2px 1px var(--color-pink-200);
+}
+
+.location {
+  font-size: 1rem;
+  text-shadow: 0 4px 5px var(--color-pink-300), 0px -2px 1px var(--color-pink-200);
+}
