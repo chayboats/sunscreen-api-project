@@ -35,12 +35,12 @@ async function getAddressData(address) {
 
 async function getUVIndex(lat, lng) {
   try {
-    const uvResult = await fetch(`${UV_URL}lat=${lat}&lng=${lng}`, { headers: { 'Content-Type': 'application/json', 'x-access-token': process.env.OPEN_UV_API_KEY } });
+    const uvResult = await fetch(`${UV_URL}lat=${lat}&lng=${lng}`, { headers: { 'Content-Type': 'application/json', 'x-access-token': process.env.OPENUV_API_KEY } });
     const jsonUvResult = await uvResult.json();
 
     return jsonUvResult.error ? jsonUvResult.error : Math.round(jsonUvResult.result.uv);
   } catch (error) {
-    console.log('hit')
+    console.log('hit');
     console.log(error.error);
     console.error(error.error);
   }
@@ -73,7 +73,7 @@ app.post('/results', async (req, res) => {
   const lng = setCoordinate('lng');
 
   const uvIndex = await getUVIndex(lat, lng);
-  
+
   if (typeof uvIndex === 'string') {
     data.error = 'There was an error finding this location';
     res.render('index.ejs', { page: 'LOCATION', data });
