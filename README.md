@@ -3,6 +3,10 @@
 <img width="1448" alt="image" src="https://github.com/user-attachments/assets/95b533f5-3a99-45b4-86c9-78dc0074ca78">
 <img width="1449" alt="image" src="https://github.com/user-attachments/assets/9f6085b7-5dbd-423b-83c5-5cd249f2ca30">
 
+
+https://github.com/user-attachments/assets/68ed509f-95e2-40ff-9667-4dd3e9df5f07
+
+
 Welcome to **Screentime** – your go-to app for finding out the UV index at any location! Enter a location, and Screentime will provide you with the UV index, UV category, advice on whether you need sunscreen, and display the exact address you searched for.
 
 ## Table of Contents
