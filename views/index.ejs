@@ -32,29 +32,32 @@
   </head>
 
   <body>
-    <div class="page">
-      <h1><span class="screen">screen</span><span class="time">time</span></h1>
+    <div class="page<%if(page === 'RESULTS') { %> results-pg <%}%>">
+      <h1>
+        <span>screen</span>
+        <span class="pink-text">time</span>
+      </h1>
 
-      <% if(page !== 'RESULTS' ) { %>
+      <% if(page !=='RESULTS' ) { %>
       <div class="main-img"></div>
-      <% } %> <% if(page ==='HOME' ) { %>
+
+      <% } %> <% if(page==='HOME' ) { %>
       <div class="ftr-card">
         <div class="home-card-title">
-          <span>Welcome to </span>
+          <span class="welcome">Welcome to </span>
           <span class="screentime">
             <span>screen</span>
-            <span class="pink-text">time</span>
+            <span>time</span>
           </span>
         </div>
 
         <p class="home-card-content">
-          <span> Keep harmful rays at bay with our location-based</span>
-          <span
-            class="pink-text"
-            style="font-weight: 700"
-            >UV detection</span
-          >.
-          <span> Staying safe is just a tap away!</span>
+          <span>
+            <span> Keep harmful rays at bay with our location-based</span>
+            <span class="uv-detection">UV detection</span>.
+          </span>
+
+          <span class="stay-safe">Staying safe is just a tap away!</span>
         </p>
 
         <form
@@ -71,8 +74,9 @@
           </button>
         </form>
       </div>
-      <% } %> <% if(page ==='LOCATION' ) { %>
-      <div class="ftr-card">
+
+      <% } %> <% if(page==='LOCATION' ) { %>
+      <div class="ftr-card location-card">
         <h2>
           <i class="fa-solid fa-location-dot pink-text"></i>
           <span>Add a location</span>
@@ -86,13 +90,12 @@
             type="text"
             id="location"
             name="location"
-            
           />
 
           <% if(data?.error ) { %>
           <p class="err-msg">
             <i class="fa-solid fa-triangle-exclamation"></i>
-            <span class="poppins-semibold">Warning: </span>
+            <span style="font-weight: 500">Warning: </span>
             <span> <%= data.error %> </span>
           </p>
           <% } %>
@@ -105,11 +108,11 @@
           </button>
         </form>
       </div>
-      <% } %> <% if(page ==='RESULTS' ) { %>
+      <% } %> <% if(page==='RESULTS' ) { %>
       <div class="results">
         <span class="uv-index"> <%= data.uvIndex %> </span>
         <div>
-          <span class="category"> <%= data.uvIndexCategory%> Exposure </span>
+          <span class="uv-category"> <%= data.uvIndexCategory%> Exposure </span>
 
           <p class="message"><%= data.message %></p>
           <p class="location"><%= data.location %></p>
