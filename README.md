@@ -34,7 +34,7 @@ Welcome to **Screentime** – your go-to app for finding out the UV index at any
    ```
 2. Navigate to the project directory:  
    ```
-   cd screentime
+   cd suncreen-api-project
    ```
 3. Install the dependencies:  
    ```
