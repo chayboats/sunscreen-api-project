@@ -22,7 +22,7 @@
   --text-lg: 2rem;
   --text-xl: 3rem;
   --text-2xl: 5rem;
-  --text-hero: 22rem;
+  --text-hero: 20rem;
 
   --space-xs: 0.4rem;
   --space-s: 0.5rem;
@@ -168,12 +168,15 @@ input {
   padding: var(--space-s);
 }
 
+.results-pg {
+  padding: 1rem
+}
 .results {
   display: grid;
   grid-template-rows: 2fr 1fr auto;
   align-items: center;
   text-align: center;
-  padding: var(--space-md);
+  padding-bottom: var(--space-md);
   width: 100%;
   height: 100%;
 }
@@ -305,5 +308,19 @@ input {
   .results-pg h1 span,
   .results-pg h1 {
     display: flex;
+  }
+  .results .uv-index {
+    font-size: 30rem;
+  }
+  .results .uv-category {
+    font-size: 4rem;
+  }
+  
+  .results .message {
+    font-size: var(--text-xl);
+  }
+  
+  .results .location {
+    font-size: var(--text-lg);
   }
 }
