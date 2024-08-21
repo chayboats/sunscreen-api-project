@@ -206,13 +206,13 @@ input {
 
 @media (min-width: 1024px) {
   .page {
+    align-items: flex-end;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: unset;
+    grid-template-rows: auto 1fr;    
   }
 
-  h1,
-  h1 span {
-    display: none;
+  h1 {
+    grid-column: span 2;
   }
 
   .main-img {
@@ -225,6 +225,7 @@ input {
     gap: var(--space-lg);
     border-radius: var(--border-radius-md);
     background-color: transparent;
+    padding-bottom: 20rem;
   }
 
   .ftr-card .home-card-title {
@@ -284,6 +285,7 @@ input {
     gap: var(--space-md);
     background-color: var(--color-pink-000);
     margin: var(--space-hero);
+    justify-content: flex-start;
   }
 
   .location-card button {
